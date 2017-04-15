@@ -1,0 +1,32 @@
+<!-- template file -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lingua</title>
+<title>{{title}}</title>
+<link rel="stylesheet" href="/css/vendor/bootstrap.css">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/customize.css">
+</head>
+<body class="lingua-theme">
+<div id="app">{{{html}}}</div>
+
+<script>
+  window.INITIAL_STATE = {{{toJSON initialState}}};
+</script>
+
+<script src="/js/lib/jquery.js"></script>
+<script src="/js/lib/bootstrap.js"></script>
+<script src="/js/bundle.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- load socket.io client -->
+<script>
+  var socket = io();
+</script>
+
+</body>
+</html>
