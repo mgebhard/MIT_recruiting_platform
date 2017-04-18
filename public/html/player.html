@@ -4,8 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="../css/index.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/player.css" rel="stylesheet">
     <title>MIT</title>
 </head>
 <body>
@@ -39,10 +41,146 @@
     </div>
     
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="col-md-6 text-center">
+      </div>
+      <div class="col-md-6 text-center" id="player-profile">
+        
+        <div class="row player-panel" id="contact-info">
+          <div class="col-md-12 text-center">
+            <h1>Tim Roberts #9 QB </h1>
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <img src="http://www.mitathletics.com/sports/m-footbl/2016-17/photos/0001/Herbanek_Travis_headshot.jpg?max_width=160&max_height=210">
+              </div>
+              <div class="col-md-6">
+                <h3> timrob@gmail.com </h3>
+                <h5> (517)-292-3333 <h5>
+                <h3> <small>Hometown:</small> <a href="https://www.google.com/maps/place/Detroit,+MI/data=!4m2!3m1!1s0x8824ca0110cb1d75:0x5776864e35b9c4d2?sa=X&ved=0ahUKEwiOnPvHp67TAhUO84MKHUklATkQ8gEIIjAA">Detroit, MI </a></h3>
+                <h3> <small>Rank:</small> 1 </h3>
+              </div>
+            </div>
+        </div>
+      </div>
+
+        <div class="row player-panel" id="tab-info">
+          <div class="col-md-12 text-center">
+             <ul class="nav nav-pills">
+              <li class="active"><a data-toggle="tab" href="#athletics">Athletics</a></li>
+              <li><a data-toggle="tab" href="#academics">Academics</a></li>
+              <li><a data-toggle="tab" href="#film">Film</a></li>
+              <li><a data-toggle="tab" href="#conversation-logs">Conversation Logs</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="athletics" class="tab-pane fade in active">
+                <h4><small>Height: </small>6'1</h4>
+                <h4><small>Weight: </small>190 <small>lbs</small></h4>
+                <h4><small>Bench Press: </small>315 <small>lbs</small></h4>
+                <h4><small>Squat: </small>450 <small>lbs</small></h4>
+
+                <h2 class="sub-header">Stats</h2>
+                <div class="table-responsive">
+                  <table class="table table-striped text-left">
+                    <thead>
+                      <tr>
+                        <th>YEAR</th>
+                        <th>RUSH</th>
+                        <th>YDS</th>
+                        <th>Y/G</th>
+                        <th>AVG</th>
+                        <th>TD</th>
+                        <th>LG</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2014</td>
+                        <td>32</td>
+                        <td>80</td>
+                        <td>8.0</td>
+                        <td>2.5</td>
+                        <td>1</td>
+                        <td>28</td>
+                      </tr>
+                      <tr>
+                        <td>2013</td>
+                        <td>30</td>
+                        <td>60</td>
+                        <td>6.0</td>
+                        <td>1.5</td>
+                        <td>1</td>
+                        <td>28</td>
+                      </tr>
+                      <tr>
+                        <td>2012</td>
+                        <td>60</td>
+                        <td>20</td>
+                        <td>4.0</td>
+                        <td>4.5</td>
+                        <td>23</td>
+                        <td>8</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              <div id="academics" class="tab-pane fade text-left">
+                <h4>Detroit Prep</h4>
+                <h4><small>ACT: </small>35</h4>
+                <h4><small>GPA: </small>4.0</h4>
+                <h4><small>SAT MATH: </small>780</h4>
+                <h4><small>SAT CHEMISTRY: </small>790</h4>
+                <h4><a href="https://web.mit.edu/gebhard/www/MeganGebhard2016.pdf">Transcript</a></h4>
+              </div>
+              
+              <div id="film" class="tab-pane fade">
+                <!-- Replace with template for videos -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <iframe width="200" height="160" src="https://www.youtube.com/embed/mbdGfzqbCV8" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <h4>Timothy Jake Roberts Highlights 2014.</h4>
+                    <p>Football Recruiting Video: Timothy "Jake" Roberts 2012 Dos Pueblos High School Goleta, CA.</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <iframe width="200" height="160" src="https://www.youtube.com/embed/pYCE1UMYIPk" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <h4>Timothy Jake Roberts Recruiting Film.</h4>
+                    <p>All Conference wide receiver
+                      Sandpoint High School</p>
+                  </div>
+                </div>
+              </div>
+
+              <div id="conversation-logs" class="tab-pane fade">
+                <div class="row">
+                <div class="col-md-12">
+                  <h3>Email:</h3> <h6>01-20-2016</h6>
+                  <p>Hey! Good to hear from you! Stanford was really fun :) A LOT different from MIT though. In some ways I fit in better but in some ways I felt like I was missing something there. Currently I'm def leaning toward MIT tho :) but I haven't committed yet</p>
+                  <hr>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-md-12">
+                <h3>Phone:</h3> <h6>12-20-2016</h6>
+                <p>Tim submitted applications to MIT and Stanford. Seems to be leaning towards MIT.</p>
+                <hr>
+            </div>
+            </div>
+              </div>
+            </div>
+            </div>
+
+          </div>
+        </div>
+      
+      </div>
     </div>
   </div>
-
-<script src="/js/index.js"></script>
 </body>
 </html> 

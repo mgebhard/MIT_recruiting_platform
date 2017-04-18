@@ -1,0 +1,18 @@
+#academics h3,
+#academics span {
+    display: inline;
+    vertical-align: top;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+.player-panel {
+    margin: 20px;
+    /*DEBUG: border: 1px solid black;*/
+
+}
+
+.tab-pane {
+    margin: 15px;
+}
