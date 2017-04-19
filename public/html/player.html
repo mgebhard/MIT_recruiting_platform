@@ -11,18 +11,40 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 
     <title>MIT</title>
 
 
-<script>
-$("tbody").sortable({
-    items: "> tr:not(:first)",
-    appendTo: "parent",
-    helper: "clone"
-}).disableSelection();
-</script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+  <script>
+  $(function() {
+    $( "#sortable1, #sortable2" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  });
+
+  $(document).on('mouseup', function(evt){
+    var x = document.getElementsByTagName("tr");
+    var y = document.getElementsByTagName("th");
+    var txt = "";
+    var i;
+    for (i = 0; i < x.length; i++) {
+        txt = txt + "The index of Row "+(i+1)+" is: "+x[i].rowIndex+"<br>";
+    }
+    console.log(txt);
+    for (var j = 0; j < y.length; j++){
+      if(!isNaN(y[j].innerHTML)){
+      console.log(y[j].innerHTML);
+      y[j].innerHTML = 5;
+      }
+    }
+  });
+  </script>
 
 
 </head>
@@ -91,9 +113,10 @@ $("tbody").sortable({
             </tr>
           </thead>
 
-          <tbody>
+
+          <tbody id="sortable1">
             <tr bgcolor="LightGrey">
-              <th scope="row">1</th>
+              <th scope="row" id="Ranks">1</th>
               <td>Tim</td>
               <td>Roberts</td>
               <td>QB</td>
@@ -101,7 +124,7 @@ $("tbody").sortable({
             </tr>
 
             <tr>
-              <th scope="row">2</th>
+              <th scope="row" id="Ranks">2</th>
               <td>Rich</td>
               <td>Froning</td>
               <td>DB</td>
@@ -109,7 +132,7 @@ $("tbody").sortable({
             </tr>
 
             <tr>
-              <th scope="row">3</th>
+              <th scope="row" id="Ranks">3</th>
               <td>Jim</td>
               <td>Brown</td>
               <td>WR</td>
@@ -117,7 +140,7 @@ $("tbody").sortable({
             </tr>
 
             <tr>
-              <th scope="row">4</th>
+              <th scope="row" id="Ranks">4</th>
               <td>Dave</td>
               <td>Adams</td>
               <td>RB</td>
