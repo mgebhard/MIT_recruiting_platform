@@ -16,3 +16,17 @@
 .tab-pane {
     margin: 15px;
 }
+
+#leftMainColumn {
+	border-right: solid 4px black;
+	padding-right: 30px;
+	height: 60vw;
+}
+
+.container {
+	/*height:100vw;*/
+}
+
+.body {
+	
+}
