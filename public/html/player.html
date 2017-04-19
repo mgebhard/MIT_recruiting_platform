@@ -23,26 +23,24 @@
   <link rel="stylesheet" href="/resources/demos/style.css" />
   <script>
   $(function() {
-    $( "#sortable1, #sortable2" ).sortable({
+    $( "#sortable1").sortable({
       connectWith: ".connectedSortable"
     }).disableSelection();
   });
 
   $(document).on('mouseup', function(evt){
-    var x = document.getElementsByTagName("tr");
-    var y = document.getElementsByTagName("th");
-    var txt = "";
-    var i;
-    for (i = 0; i < x.length; i++) {
-        txt = txt + "The index of Row "+(i+1)+" is: "+x[i].rowIndex+"<br>";
+    setTimeout(function(){
+    var rankingTable = document.getElementById("rankingTable");
+    var x = rankingTable.getElementsByTagName("tr");
+    var y = rankingTable.getElementsByTagName("th");
+    for (i = 1; i < x.length; i++) {
+        y[i+4].innerHTML = x[i].rowIndex;
     }
-    console.log(txt);
-    for (var j = 0; j < y.length; j++){
-      if(!isNaN(y[j].innerHTML)){
-      console.log(y[j].innerHTML);
-      y[j].innerHTML = 5;
-      }
-    }
+
+    var TimRank = document.getElementById("TimRank");
+    var TimOtherRank = document.getElementById("TimOtherRank");
+    TimRank.innerHTML = " " + TimOtherRank.innerHTML;
+  }, 10);
   });
   </script>
 
@@ -105,21 +103,21 @@
           </div>
 
         <div>
-        <table class="table">
+        <table class="table" id="rankingTable">
           <thead>
             <tr>
               <th>Rank</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Position</th>
-              <th></th>
+              <th>_</th>
             </tr>
           </thead>
 
 
           <tbody id="sortable1">
             <tr bgcolor="LightGrey">
-              <th scope="row" id="Ranks">1</th>
+              <th scope="row" id="TimOtherRank">1</th>
               <td>Tim</td>
               <td>Roberts</td>
               <td>QB</td>
@@ -127,7 +125,7 @@
             </tr>
 
             <tr>
-              <th scope="row" id="Ranks">2</th>
+              <th scope="row" id="Ranks2">2</th>
               <td>Rich</td>
               <td>Froning</td>
               <td>DB</td>
@@ -135,7 +133,7 @@
             </tr>
 
             <tr>
-              <th scope="row" id="Ranks">3</th>
+              <th scope="row" id="Ranks3">3</th>
               <td>Jim</td>
               <td>Brown</td>
               <td>WR</td>
@@ -143,7 +141,7 @@
             </tr>
 
             <tr>
-              <th scope="row" id="Ranks">4</th>
+              <th scope="row" id="Ranks4">4</th>
               <td>Dave</td>
               <td>Adams</td>
               <td>RB</td>
@@ -201,7 +199,7 @@
                 <h3> timrob@gmail.com </h3>
                 <h5> (517)-292-3333 <h5>
                 <h3> <small>Hometown:</small> <a href="https://www.google.com/maps/place/Detroit,+MI/data=!4m2!3m1!1s0x8824ca0110cb1d75:0x5776864e35b9c4d2?sa=X&ved=0ahUKEwiOnPvHp67TAhUO84MKHUklATkQ8gEIIjAA">Detroit, MI </a></h3>
-                <h3> <small>Rank:</small> 1 </h3>
+                <h3> <small>Rank:</small><b id="TimRank"> 1</b></h3>
               </div>
             </div>
         </div>
