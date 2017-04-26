@@ -249,7 +249,8 @@
                   </table>
                 </div>
               </div>
-              
+
+              <!-- ACADEMICS TAB -->
               <div id="academics" class="tab-pane fade text-left">
                 <h4>Detroit Prep</h4>
                 <h4><small>ACT: </small>35</h4>
@@ -259,6 +260,7 @@
                 <h4><a href="https://web.mit.edu/gebhard/www/MeganGebhard2016.pdf">Transcript</a></h4>
               </div>
               
+              <!-- FILM TAB -->
               <div id="film" class="tab-pane fade">
                 <!-- Replace with template for videos -->
                 <div class="row">
@@ -282,6 +284,7 @@
                 </div>
               </div>
 
+              <!-- CONVO LOGS LIST -->
               <div id="conversation-logs" class="tab-pane fade">
                 <div class="row">
                 <div class="col-md-12">
@@ -296,25 +299,35 @@
                   <p>Hey! Good to hear from you! Stanford was really fun :) A LOT different from MIT though. In some ways I fit in better but in some ways I felt like I was missing something there. Currently I'm def leaning toward MIT tho :) but I haven't committed yet</p>
                   <hr>
               </div>
-              </div>
-              <div class="row">
-              <div class="col-md-12">
-                <h3>Phone:</h3> <h6>12-20-2016</h6>
-                <p>Tim submitted applications to MIT and Stanford. Seems to be leaning towards MIT.</p>
-                <hr>
-              </div>
-              </div>
-              <div class="row">
-              <div class="col-md-12">
-                <input class="btn btn-default" type="button" value="Add Conversation Notes">
-
-                </button>
-              </div>
-              </div>
+                <a data-toggle="tab" href="#form"> <input id="add" class="btn btn-default" type="button" value="Add"> </a>
               </div>
             </div>
-            </div>
-
+            
+              <!-- CONVO LOG FORM -->
+              <!-- TODO: Submit to MongoDB and clear form. -->
+              <div id="form" class="tab-pane fade text-left">
+              <div class='row text-left'>
+                <div class='col-md-12'>
+                  <div class='form-group'>
+                    <label for='channel'>Communication Medium:</label>
+                    <select class='form-control' id='channel'>
+                      <option>Email</option>
+                      <option>Call</option>
+                      <option>Text</option>
+                      <option>In Person</option>
+                    </select>
+                  </div>
+                  <div class='form-group'>
+                    <label for='notes'>Notes:</label>
+                    <textarea class='form-control' id='notes' rows='10'></textarea>
+                  </div>
+                  <div class='form-group'>
+                    <a data-toggle="tab" href="#conversation-logs"> <input id="add" class="btn btn-default" type="button" value="Add"> </a>
+                  </div>
+                </div>
+                </div>
+              </div>
+              </div>
           </div>
         </div>
       

@@ -13,6 +13,10 @@
 
 }
 
+textarea {
+    width: 100%;
+}
+
 .tab-pane {
     margin: 15px;
 }
