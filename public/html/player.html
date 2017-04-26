@@ -22,11 +22,22 @@
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <link rel="stylesheet" href="/resources/demos/style.css" />
   <script>
+  
+
+  var fixHelper = function(e, ui) {  
+  ui.children().each(function() {  
+    $(this).width($(this).width());  
+  });  
+  return ui;  
+};
   $(function() {
     $( "#sortable1").sortable({
-      connectWith: ".connectedSortable"
+      helper: fixHelper
     }).disableSelection();
   });
+
+
+
 
   $(document).on('mouseup', function(evt){
     setTimeout(function(){
