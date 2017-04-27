@@ -10,7 +10,6 @@
 .player-panel {
     margin: 20px;
     /*DEBUG: border: 1px solid black;*/
-
 }
 
 textarea {
@@ -21,16 +20,16 @@ textarea {
     margin: 15px;
 }
 
+#player-profile {
+    border-left: solid 4px black;
+}
+
 #leftMainColumn {
-	border-right: solid 4px black;
 	padding-right: 30px;
-	height: 60vw;
+	/*height: 60vw;*/
 }
 
-.container {
-	/*height:100vw;*/
-}
-
-.body {
-	
+#mainContainer {
+	/*height:100%;
+    border:1px solid black;*/
 }

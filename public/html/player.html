@@ -71,11 +71,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">MIT Recruiting</a>
+              <a class="navbar-brand" href="player.html">MIT Recruiting</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Players</a></li>
+                <li class="active"><a href="player.html">Players</a></li>
                 <li><a href="schedule.html">Schedule</a></li>
               </ul>
             </div>
@@ -84,13 +84,11 @@
       </div>
   </div>
 
-  <div class="container">
-    <!-- <div class="row" id="header">
-      
-    </div> -->
+  <div class="container" id="mainContainer">
+
     <div class="row">
       <div class="col-md-6" id="leftMainColumn">
-        <h1>Players</h1>
+        <h1 align="center">Players</h1>
         <div class="row">
           <div class="col-md-9">
             <form class="navbar-form" role="search">
@@ -121,89 +119,86 @@
         <table class="table" id="rankingTable">
           <thead>
             <tr>
+              <th> </th>
               <th>Rank</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Position</th>
-              <th>_</th>
             </tr>
           </thead>
 
-
-          <tbody id="sortable1">
+          <tbody id="sortable1" style="cursor: pointer;">
             <tr>
+              <td><span class="glyphicon glyphicon-align-justify"></span></td>
               <th scope="row" id="Ranks2">1</th>
               <td>Rich</td>
               <td>Froning</td>
               <td>DB</td>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
             </tr>
 
             <tr bgcolor="LightGrey">
+              <td><span class="glyphicon glyphicon-align-justify"></span></td>
               <th scope="row" id="TimOtherRank">2</th>
               <td>Tim</td>
               <td>Roberts</td>
               <td>QB</td>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
             </tr>
 
             <tr>
+              <td><span class="glyphicon glyphicon-align-justify"></span></td>
               <th scope="row" id="Ranks3">3</th>
               <td>Jim</td>
               <td>Brown</td>
               <td>WR</td>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
             </tr>
 
             <tr>
+              <td><span class="glyphicon glyphicon-align-justify"></span></td>
               <th scope="row" id="Ranks4">4</th>
               <td>Dave</td>
               <td>Adams</td>
               <td>RB</td>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-
-      <div class="col-md-6 text-center" id="player-profile">
-        <h1> Player Profile </h1>
+      <div class="col-md-6" id="player-profile">
+        <h1 align="center">Tim Roberts #9 QB</h1>
         <div class="row player-panel" id="contact-info">
-          <div class="col-md-12 text-center">
-            <h2>Tim Roberts #9 QB</h2>
+          <div class="col-md-12">
             <div class="row">
               <div class="col-md-6 text-center">
                 <img src="http://www.mitathletics.com/sports/m-footbl/2016-17/photos/0001/Herbanek_Travis_headshot.jpg?max_width=160&max_height=210">
               </div>
               <div class="col-md-6">
-                <h3>timrob@gmail.com</h3>
-                <h5>(517)-292-3333<h5>
-                <h3> <small>Hometown:</small> <a href="https://www.google.com/maps/place/Detroit,+MI/data=!4m2!3m1!1s0x8824ca0110cb1d75:0x5776864e35b9c4d2?sa=X&ved=0ahUKEwiOnPvHp67TAhUO84MKHUklATkQ8gEIIjAA">Detroit, MI </a></h3>
-                <h3> <small>Rank:</small><b id="TimRank"> 2</b></h3>
+                <h3><a href="mailto:timrob@gmail.com" target="_top">timrob@gmail.com</a></h3>
+                <h3>(517)-292-3333</h3>
+                <h3> <small>Hometown:</small> <a href="https://www.google.com/maps/place/Detroit,+MI/data=!4m2!3m1!1s0x8824ca0110cb1d75:0x5776864e35b9c4d2?sa=X&ved=0ahUKEwiOnPvHp67TAhUO84MKHUklATkQ8gEIIjAA">Detroit, MI</a></h3>
+                <h3><small>Rank:</small><b id="TimRank"> 2</b></h3>
               </div>
             </div>
+          </div>
         </div>
-      </div>
 
         <div class="row player-panel" id="tab-info">
-          <div class="col-md-12 text-center">
-              <ul class="nav nav-pills nav-justified" >
+          <div class="col-md-12">
+            <ul class="nav nav-pills nav-justified" >
               <li class="active"><a data-toggle="tab" href="#athletics">Athletics</a></li>
               <li><a data-toggle="tab" href="#academics">Academics</a></li>
               <li><a data-toggle="tab" href="#film">Film</a></li>
-              <li><a data-toggle="tab" href="#conversation-logs">Conversation Logs</a></li>
+              <li><a data-toggle="tab" href="#conversation-log">Conversation Log</a></li>
             </ul>
 
             <div class="tab-content">
               <div id="athletics" class="tab-pane fade in active">
                 <h4><small>Height: </small>6'1</h4>
-                <h4><small>Weight: </small>190 <small>lbs</small></h4>
-                <h4><small>Bench Press: </small>315 <small>lbs</small></h4>
-                <h4><small>Squat: </small>450 <small>lbs</small></h4>
-
-                <h2 class="sub-header">Stats</h2>
+                <h4><small>Weight: </small>190 lbs</h4>
+                <h4><small>Bench Press: </small>315 lbs</h4>
+                <h4><small>Squat: </small>450 lbs</h4>
+                <br>
+                <h4>Stats</h4>
                 <div class="table-responsive">
                   <table class="table table-striped text-left">
                     <thead>
@@ -252,11 +247,11 @@
 
               <!-- ACADEMICS TAB -->
               <div id="academics" class="tab-pane fade text-left">
-                <h4>Detroit Prep</h4>
+                <h4><small>School: </small>Detroit Prep</h4>
                 <h4><small>ACT: </small>35</h4>
                 <h4><small>GPA: </small>4.0</h4>
-                <h4><small>SAT MATH: </small>780</h4>
-                <h4><small>SAT CHEMISTRY: </small>790</h4>
+                <h4><small>SAT Math: </small>780</h4>
+                <h4><small>SAT Chemistry: </small>790</h4>
                 <h4><a href="https://web.mit.edu/gebhard/www/MeganGebhard2016.pdf">Transcript</a></h4>
               </div>
               
@@ -267,7 +262,7 @@
                   <div class="col-md-6">
                     <iframe width="200" height="160" src="https://www.youtube.com/embed/pYCE1UMYIPk" frameborder="0" allowfullscreen></iframe>
                   </div>
-                  <div class="col-md-6 text-center">
+                  <div class="col-md-6">
                     <h4>Timothy Jake Roberts Highlights 2014.</h4>
                     <p>Football Recruiting Video: Timothy "Jake" Roberts 2012 Dos Pueblos High School Goleta, CA.</p>
                   </div>
@@ -276,7 +271,7 @@
                   <div class="col-md-6">
                     <iframe width="200" height="160" src="https://www.youtube.com/embed/AioWvIR4Tf8" frameborder="0" allowfullscreen></iframe>
                   </div>
-                  <div class="col-md-6 text-center">
+                  <div class="col-md-6">
                     <h4>Timothy Jake Roberts Recruiting Film.</h4>
                     <p>All Conference wide receiver
                       Sandpoint High School</p>
@@ -284,18 +279,18 @@
                 </div>
               </div>
 
-              <!-- CONVO LOGS LIST -->
-              <div id="conversation-logs" class="tab-pane fade">
+              <!-- CONVO LOG LIST -->
+              <div id="conversation-log" class="tab-pane fade">
                 <div class="row">
                 <div class="col-md-12">
-                  <h3>Email:</h3> <h6>04-20-2017</h6>
+                  <h4>Email</h4> <h6>04-20-2017</h6>
                   <p>Hey Coach Mike, I play in Detroit Michigan on April 28th and would love for you to visit me. Thanks, Timmy.</p>
                   <hr>
                 </div>
                 </div>
                 <div class="row">
                 <div class="col-md-12">
-                  <h3>Email:</h3> <h6>01-20-2016</h6>
+                  <h4>Email</h4> <h6>01-20-2016</h6>
                   <p>Hey! Good to hear from you! Stanford was really fun :) A LOT different from MIT though. In some ways I fit in better but in some ways I felt like I was missing something there. Currently I'm def leaning toward MIT tho :) but I haven't committed yet</p>
                   <hr>
               </div>
@@ -322,7 +317,7 @@
                     <textarea class='form-control' id='notes' rows='10'></textarea>
                   </div>
                   <div class='form-group'>
-                    <a data-toggle="tab" href="#conversation-logs"> <input id="add" class="btn btn-default" type="button" value="Add"> </a>
+                    <a data-toggle="tab" href="#conversation-log"> <input id="add" class="btn btn-default" type="button" value="Add"> </a>
                   </div>
                 </div>
                 </div>
