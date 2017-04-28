@@ -20,13 +20,10 @@ textarea {
     margin: 15px;
 }
 
-#player-profile {
-    border-left: solid 4px black;
-}
-
 #leftMainColumn {
 	padding-right: 30px;
 	/*height: 60vw;*/
+    border-right: solid 4px black;
 }
 
 #mainContainer {
