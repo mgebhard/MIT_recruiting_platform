@@ -12,6 +12,11 @@
     /*DEBUG: border: 1px solid black;*/
 }
 
+body {
+  padding-top: 70px;
+}
+
+
 textarea {
     width: 100%;
 }
@@ -22,8 +27,14 @@ textarea {
 
 #leftMainColumn {
 	padding-right: 30px;
-	/*height: 60vw;*/
+    overflow: scroll;
+    height:100%;
     border-right: solid 4px black;
+}
+
+#tab-info {
+    overflow: scroll;
+    height:100%;
 }
 
 #mainContainer {
