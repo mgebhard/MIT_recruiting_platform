@@ -8,26 +8,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="../css/index.css" rel="stylesheet">
     <link href="../css/player.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-
     <title>MIT Recruiting</title>
-
 
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
+<!--   <link rel="stylesheet" href="/resources/demos/style.css" /> -->
   <script>
-  
+  $('#leftMainColumn').height($(window).height() - 50)
 
   var fixHelper = function(e, ui) {  
   ui.children().each(function() {  
-    $(this).width($(this).width());  
-  });  
+    $(this).width($(this).width());
+  });
   return ui;  
 };
   $(function() {
@@ -36,56 +34,71 @@
     }).disableSelection();
   });
 
-
-
-
   $(document).on('mouseup', function(evt){
     setTimeout(function(){
-    var rankingTable = document.getElementById("rankingTable");
-    var x = rankingTable.getElementsByTagName("tr");
-    var y = rankingTable.getElementsByTagName("th");
-    for (i = 1; i < x.length; i++) {
-        y[i+4].innerHTML = x[i].rowIndex;
-    }
+      var rankingTable = document.getElementById("rankingTable");
+      var x = rankingTable.getElementsByTagName("tr");
+      var y = rankingTable.getElementsByTagName("th");
+      for (i = 1; i < x.length; i++) {
+          y[i+4].innerHTML = x[i].rowIndex;
+      }
 
-    var TimRank = document.getElementById("TimRank");
-    var TimOtherRank = document.getElementById("TimOtherRank");
-    TimRank.innerHTML = " " + TimOtherRank.innerHTML;
-  }, 10);
-  });
+      var TimRank = document.getElementById("TimRank");
+      var TimOtherRank = document.getElementById("TimOtherRank");
+      TimRank.innerHTML = " " + TimOtherRank.innerHTML;
+      var StevieRank = document.getElementById("StevieRank");
+      var StevieOtherRank = document.getElementById("StevieOtherRank");
+      StevieRank.innerHTML = " " + StevieOtherRank.innerHTML;
+      }, 10);
+    });
+
+    $(document).ready(function(){
+      $("#rankingTable tr").click(function(){
+          $(this).addClass('active').siblings().removeClass('active');
+          var cells = this.getElementsByTagName("td");
+          timProf = document.getElementById("TimProfile");
+          stevieProf = document.getElementById("StevieProfile");
+
+          if (cells[1].innerHTML == "Stevie"){
+            stevieProf.style.display = "inline-block";
+            timProf.style.display = "none";
+          }
+          else if (cells[1].innerHTML == "Tim"){
+            stevieProf.style.display = "none";
+            timProf.style.display = "inline-block";
+          }
+      });
+    });
+
+
   </script>
-
 
 </head>
 
-
 <body>
-  <div class="navbar-wrapper">
+
+  <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="player.html">MIT Recruiting</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="player.html">Players</a></li>
-                <li><a href="schedule.html">Schedule</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="player.html">MIT Recruiting</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="player.html">Players</a></li>
+            <li><a href="schedule.html">Schedule</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-  </div>
+    </nav>
 
-  <div class="container" id="mainContainer">
-
+  <div class="container">
     <div class="row">
       <div class="col-md-6" id="leftMainColumn">
         <h1 align="center">Players</h1>
@@ -116,7 +129,7 @@
         </div>
 
         <div>
-        <table class="table" id="rankingTable">
+        <table class="table table-hover active" id="rankingTable">
           <thead>
             <tr>
               <th> </th>
@@ -129,144 +142,117 @@
 
           <tbody id="sortable1" style="cursor: pointer;">
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks2">1</th>
               <td>Rich</td>
               <td>Froning</td>
               <td>DB</td>
             </tr>
-            <tr bgcolor="LightGrey">
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
+            <tr class="active">
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="TimOtherRank">2</th>
               <td>Tim</td>
               <td>Roberts</td>
               <td>QB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks3">3</th>
               <td>Jim</td>
               <td>Brown</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks4">4</th>
               <td>Dave</td>
               <td>Adams</td>
               <td>RB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks5">5</th>
               <td>John</td>
               <td>Hancock</td>
               <td>FB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks6">6</th>
               <td>Sam</td>
               <td>Johnson</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks7">7</th>
               <td>Alex</td>
               <td>Carrera</td>
               <td>TE</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks8">8</th>
               <td>Raul</td>
               <td>Enrique</td>
               <td>OL</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks9">9</th>
               <td>Joe</td>
               <td>Rogers</td>
               <td>QB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks10">10</th>
               <td>Steven</td>
               <td>Smith</td>
               <td>RT</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks11">11</th>
               <td>Randy</td>
               <td>Jackson</td>
               <td>LT</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks12">12</th>
               <td>Simon</td>
               <td>Cowell</td>
               <td>OL</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
-              <th scope="row" id="Ranks13">13</th>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
+              <th scope="row" id="StevieOtherRank">13</th>
               <td>Stevie</td>
               <td>Curry</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks14">14</th>
               <td>Dwayne</td>
               <td>Wade</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks15">15</th>
               <td>Larry</td>
               <td>James</td>
               <td>QB</td>
             </tr>
-<!--             <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks16">16</th>
-              <td>Corey</td>
-              <td>Jones</td>
-              <td>FB</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks17">17</th>
-              <td>Will</td>
-              <td>Noriega</td>
-              <td>RB</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks18">18</th>
-              <td>Sean</td>
-              <td>Hammersmith</td>
-              <td>OL</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks19">19</th>
-              <td>Adrian</td>
-              <td>Gutierrez</td>
-              <td>TE</td>
-            </tr> -->
           </tbody>
         </table>
+        </div>
       </div>
-    </div>
 
       <div class="col-md-6" id="player-profile">
+        <div id="TimProfile">
         <h1 align="center">Tim Roberts #9 QB</h1>
         <div class="row player-panel" id="contact-info">
           <div class="col-md-12">
@@ -433,8 +419,178 @@
               </div>
           </div>
         </div>
+
+      </div> <!-- tim profile div -->
+
+
+
       
+      <div id="StevieProfile" style="display:none">
+        <h1 align="center">Stevie Curry #81 WR</h1>
+        <div class="row player-panel" id="contact-info1">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <img src="http://www.mitathletics.com/sports/m-footbl/2016-17/photos/0001/Lindsay_Matt_headshot.jpg?max_width=160&max_height=210">
+              </div>
+              <div class="col-md-6">
+                <h3><a href="mailto:stevieC@gmail.com" target="_top">stevieC@gmail.com</a></h3>
+                <h3>(832)-638-8276</h3>
+                <h3> <small>Hometown:</small> <a href="https://www.google.com/maps/place/Richmond,+TX/@29.5892959,-95.7934411,13z/data=!3m1!4b1!4m5!3m4!1s0x86411de1844ffac5:0x3b7a2d2657c7f42e!8m2!3d29.5821811!4d-95.7607832">Richmond, TX</a></h3>
+                <h3><small>Rank:</small><b id="StevieRank"> 13</b></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row player-panel" id="tab-info1">
+          <div class="col-md-12">
+            <ul class="nav nav-pills nav-justified" >
+              <li class="active"><a data-toggle="tab" href="#athletics1">Athletics</a></li>
+              <li><a data-toggle="tab" href="#academics1">Academics</a></li>
+              <li><a data-toggle="tab" href="#videos1">Videos</a></li>
+              <li><a data-toggle="tab" href="#conversations1">Conversations</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="athletics1" class="tab-pane fade in active">
+                <h4><small>Height: </small>6'4</h4>
+                <h4><small>Weight: </small>210 lbs</h4>
+                <h4><small>Bench Press: </small>335 lbs</h4>
+                <h4><small>Squat: </small>475 lbs</h4>
+                <br>
+                <h4>Stats</h4>
+                <div class="table-responsive">
+                  <table class="table table-striped text-left">
+                    <thead>
+                      <tr>
+                        <th>YEAR</th>
+                        <th>CATCH</th>
+                        <th>YDS</th>
+                        <th>Y/G</th>
+                        <th>AVG</th>
+                        <th>TD</th>
+                        <th>LG</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>2015</td>
+                        <td>35</td>
+                        <td>250</td>
+                        <td>20</td>
+                        <td>8.5</td>
+                        <td>4</td>
+                        <td>40</td>
+                      </tr>
+                      <tr>
+                        <td>2014</td>
+                        <td>25</td>
+                        <td>175</td>
+                        <td>13</td>
+                        <td>6</td>
+                        <td>2</td>
+                        <td>25</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- ACADEMICS TAB -->
+              <div id="academics1" class="tab-pane fade text-left">
+                <h4><small>School: </small>Richmond High</h4>
+                <h4><small>ACT: </small>34</h4>
+                <h4><small>GPA: </small>3.9</h4>
+                <h4><small>SAT Math: </small>800</h4>
+                <h4><small>SAT Biology: </small>770</h4>
+                <br>
+                <h4><a href="https://web.mit.edu/gebhard/www/MeganGebhard2016.pdf">Transcript</a></h4>
+              </div>
+              
+              <!-- VIDEOS TAB -->
+              <div id="videos1" class="tab-pane fade">
+                <!-- Replace with template for videos -->
+                <div class="row">
+                  <div class="col-md-6">
+                    <iframe width="200" height="160" src="https://www.youtube.com/embed/3BpY17Xr0kU" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6">
+                    <h4>Stevie Curry Senior Day Highlights 2015.</h4>
+                    <p>Football Recruiting Video: Stevie Curry highlights Milton, MA.</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <iframe width="200" height="160" src="https://www.youtube.com/embed/8aDzoEsicr0" frameborder="0" allowfullscreen></iframe>
+                  </div>
+                  <div class="col-md-6">
+                    <h4>Stevie Curry Recruiting Video.</h4>
+                    <p>All State wide receiver</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CONVO LOG LIST -->
+              <div id="conversations1" class="tab-pane fade">
+                <div class="row">
+                  <div class="col-md-12" align="center">
+                    <!-- <a data-toggle="tab" href="#form"> <input id="add" class="btn btn-default" type="button" value="Add"> </a> -->
+                    <a data-toggle="tab" href="#form1"><input type="button" id="add1" class="btn btn-primary" value="Add"></a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Email</h4> <h6>05-6-2017</h6>
+                    <p>Hey Coach, I am playing in Richmond Texas on June 1st if you would like to see me play. Thanks, Stevie.</p>
+                    <hr>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h4>Email</h4> <h6>03-04-2017</h6>
+                    <p>Hey! Can't wait to continue the recruiting process with you. MIT is definitely in my top 3.</p>
+                    <hr>
+                  </div>
+                </div>
+            </div>
+            
+              <!-- CONVO LOG FORM -->
+              <!-- TODO: Submit to MongoDB and clear form. -->
+              <div id="form1" class="tab-pane fade text-left">
+              <div class='row text-left'>
+                <div class='col-md-12'>
+                  <div class='form-group'>
+                    <label for='channel'>Communication Medium:</label>
+                    <select class='form-control' id='channel1'>
+                      <option>Email</option>
+                      <option>Call</option>
+                      <option>Text</option>
+                      <option>In Person</option>
+                    </select>
+                  </div>
+                  <div class='form-group'>
+                    <label for='notes'>Notes:</label>
+                    <textarea class='form-control' id='notes1' rows='10'></textarea>
+                  </div>
+                  <div class='form-group'>
+                    <a data-toggle="tab" href="#conversations1"> <input id="add1" class="btn btn-primary" type="button" value="Add"> </a>
+                  </div>
+                </div>
+                </div>
+              </div>
+              </div>
+          </div>
+        </div>
+
       </div>
+
+      </div> <!-- player profile div -->
+
+
+
+
+
     </div>
   </div>
 </body>

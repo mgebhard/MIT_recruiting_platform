@@ -12,6 +12,12 @@
     /*DEBUG: border: 1px solid black;*/
 }
 
+body {
+  padding-top: 70px;
+  overflow: hidden;
+}
+
+
 textarea {
     width: 100%;
 }
@@ -21,9 +27,15 @@ textarea {
 }
 
 #leftMainColumn {
+    height:620px;
 	padding-right: 30px;
-	/*height: 60vw;*/
+    overflow-y: scroll;
     border-right: solid 4px black;
+}
+
+.tab-content {
+    overflow-y: scroll;
+    height:300px;
 }
 
 #mainContainer {
@@ -34,4 +46,12 @@ textarea {
 #dropdownMenu1 {
     margin-top: 8px;
     margin-bottom: 8px;
+}
+
+.glyphicon-menu-hamburger {
+    visibility: hidden;
+}
+
+.active tr:hover .glyphicon-menu-hamburger {
+    visibility: visible;
 }
