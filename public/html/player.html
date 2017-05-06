@@ -8,27 +8,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="../css/index.css" rel="stylesheet">
     <link href="../css/player.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-
     <title>MIT Recruiting</title>
-
 
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css" />
+<!--   <link rel="stylesheet" href="/resources/demos/style.css" /> -->
   <script>
-  
   $('#leftMainColumn').height($(window).height() - 50)
 
   var fixHelper = function(e, ui) {  
   ui.children().each(function() {  
-    $(this).width($(this).width());  
-  });  
+    $(this).width($(this).width());
+  });
   return ui;  
 };
   $(function() {
@@ -37,28 +34,23 @@
     }).disableSelection();
   });
 
-
-
-
   $(document).on('mouseup', function(evt){
     setTimeout(function(){
-    var rankingTable = document.getElementById("rankingTable");
-    var x = rankingTable.getElementsByTagName("tr");
-    var y = rankingTable.getElementsByTagName("th");
-    for (i = 1; i < x.length; i++) {
-        y[i+4].innerHTML = x[i].rowIndex;
-    }
+      var rankingTable = document.getElementById("rankingTable");
+      var x = rankingTable.getElementsByTagName("tr");
+      var y = rankingTable.getElementsByTagName("th");
+      for (i = 1; i < x.length; i++) {
+          y[i+4].innerHTML = x[i].rowIndex;
+      }
 
-    var TimRank = document.getElementById("TimRank");
-    var TimOtherRank = document.getElementById("TimOtherRank");
-    TimRank.innerHTML = " " + TimOtherRank.innerHTML;
-  }, 10);
-  });
+      var TimRank = document.getElementById("TimRank");
+      var TimOtherRank = document.getElementById("TimOtherRank");
+      TimRank.innerHTML = " " + TimOtherRank.innerHTML;
+      }, 10);
+    });
   </script>
 
-
 </head>
-
 
 <body>
 
@@ -114,7 +106,7 @@
         </div>
 
         <div>
-        <table class="table" id="rankingTable">
+        <table class="table table-hover active" id="rankingTable">
           <thead>
             <tr>
               <th> </th>
@@ -127,173 +119,110 @@
 
           <tbody id="sortable1" style="cursor: pointer;">
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks2">1</th>
               <td>Rich</td>
               <td>Froning</td>
               <td>DB</td>
             </tr>
-            <tr bgcolor="LightGrey">
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
+            <tr class="active">
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="TimOtherRank">2</th>
               <td>Tim</td>
               <td>Roberts</td>
               <td>QB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks3">3</th>
               <td>Jim</td>
               <td>Brown</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks4">4</th>
               <td>Dave</td>
               <td>Adams</td>
               <td>RB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks5">5</th>
               <td>John</td>
               <td>Hancock</td>
               <td>FB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
-              <th scope="row" id="Ranks2">1</th>
-              <td>Rich</td>
-              <td>Froning</td>
-              <td>DB</td>
-            </tr>
-            <tr bgcolor="LightGrey">
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="TimOtherRank">2</th>
-              <td>Tim</td>
-              <td>Roberts</td>
-              <td>QB</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
-              <th scope="row" id="Ranks3">3</th>
-              <td>Jim</td>
-              <td>Brown</td>
-              <td>WR</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
-              <th scope="row" id="Ranks4">4</th>
-              <td>Dave</td>
-              <td>Adams</td>
-              <td>RB</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
-              <th scope="row" id="Ranks5">5</th>
-              <td>John</td>
-              <td>Hancock</td>
-              <td>FB</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks6">6</th>
               <td>Sam</td>
               <td>Johnson</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks7">7</th>
               <td>Alex</td>
               <td>Carrera</td>
               <td>TE</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks8">8</th>
               <td>Raul</td>
               <td>Enrique</td>
               <td>OL</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks9">9</th>
               <td>Joe</td>
               <td>Rogers</td>
               <td>QB</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks10">10</th>
               <td>Steven</td>
               <td>Smith</td>
               <td>RT</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks11">11</th>
               <td>Randy</td>
               <td>Jackson</td>
               <td>LT</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks12">12</th>
               <td>Simon</td>
               <td>Cowell</td>
               <td>OL</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks13">13</th>
               <td>Stevie</td>
               <td>Curry</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks14">14</th>
               <td>Dwayne</td>
               <td>Wade</td>
               <td>WR</td>
             </tr>
             <tr>
-              <td><span class="glyphicon glyphicon-align-justify" style="visibility:hidden"></span></td>
+              <td><span class="glyphicon glyphicon-menu-hamburger"></span></td>
               <th scope="row" id="Ranks15">15</th>
               <td>Larry</td>
               <td>James</td>
               <td>QB</td>
             </tr>
-              <!-- <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks16">16</th>
-              <td>Corey</td>
-              <td>Jones</td>
-              <td>FB</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks17">17</th>
-              <td>Will</td>
-              <td>Noriega</td>
-              <td>RB</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks18">18</th>
-              <td>Sean</td>
-              <td>Hammersmith</td>
-              <td>OL</td>
-            </tr>
-            <tr>
-              <td><span class="glyphicon glyphicon-align-justify"></span></td>
-              <th scope="row" id="Ranks19">19</th>
-              <td>Adrian</td>
-              <td>Gutierrez</td>
-              <td>TE</td>
-            </tr> -->
           </tbody>
         </table>
         </div>

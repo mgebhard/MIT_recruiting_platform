@@ -47,3 +47,11 @@ textarea {
     margin-top: 8px;
     margin-bottom: 8px;
 }
+
+.glyphicon-menu-hamburger {
+    visibility: hidden;
+}
+
+.active tr:hover .glyphicon-menu-hamburger {
+    visibility: visible;
+}
