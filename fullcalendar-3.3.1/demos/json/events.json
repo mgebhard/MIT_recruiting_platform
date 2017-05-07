@@ -1,0 +1,46 @@
+[
+  {
+    "title": "New England Classic Tournament",
+    "start": "2017-04-01"
+  },
+  {
+    "title": "Recruits Visiting Campus",
+    "start": "2017-04-07",
+    "end": "2017-04-10"
+  },
+  {
+    "title": "Visit South Florida",
+    "start": "2017-04-15",
+    "end": "2017-04-16"
+  },
+  {
+    "title": "Meeting with Bill",
+    "start": "2017-04-12T10:30:00-05:00",
+    "end": "2017-04-12T12:30:00-05:00"
+  },
+  {
+    "title": "Call with Charlie",
+    "start": "2017-04-20T12:00:00-05:00"
+  },
+  {
+    "title": "Meeting",
+    "start": "2017-04-12T14:30:00-05:00"
+  },
+  {
+    "title": "Happy Hour",
+    "start": "2017-04-12T17:30:00-05:00"
+  },
+  {
+    "title": "Dinner",
+    "start": "2017-04-12T20:00:00"
+  },
+  {
+    "title": "Birthday Party",
+    "start": "2017-04-13T07:00:00-05:00"
+  },
+  {
+    "title": "Click for Google",
+    "url": "http://google.com/",
+    "start": "2017-04-28"
+  }
+]
