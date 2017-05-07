@@ -27,7 +27,7 @@ textarea {
 }
 
 #leftMainColumn {
-    height:620px;
+    height:640px;
 	padding-right: 30px;
     overflow-y: scroll;
     border-right: solid 4px black;
