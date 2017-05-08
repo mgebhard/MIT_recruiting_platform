@@ -36,23 +36,26 @@
    };
  };
 
+ var TIM_ID = 1;
+ var STEVIE_ID = 12;
+
  // Initialize ID to player object
  var PLAYERS = {
-   1: new Profile("Rich", "Froning", 1, "DB"),
-   2: new Profile("Tim", "Roberts", 2, "QB"),
-   3: new Profile("Jim", "Brown", 3, "WR"),
-   4: new Profile("Dave", "Adams", 4, "FB"),
-   5: new Profile("John", "Hancock", 5, "TE"),
-   6: new Profile("Sam", "Johnson", 6, "OL"),
-   7: new Profile("Alex", "Carrera", 7, "DB"),
-   8: new Profile("Raul", "Enrique", 8, "LT"),
-   9: new Profile("Joe", "Rogers", 9, "WR"),
-   10: new Profile("Steven", "Smith", 10, "TE"),
-   11: new Profile("Randy", "Jackson", 11, "QB"),
-   12: new Profile("Simon", "Cowell", 12, "RB"),
-   13: new Profile("Stevie", "Curry", 13, "WR"),
-   14: new Profile("Dwayne", "Wade", 14, "OL"),
-   15: new Profile("Larry", "James", 15, "QB")
+   0: new Profile("Rich", "Froning", 1, "DB"),
+   1: new Profile("Tim", "Roberts", 2, "QB"),
+   2: new Profile("Jim", "Brown", 3, "WR"),
+   3: new Profile("Dave", "Adams", 4, "FB"),
+   4: new Profile("John", "Hancock", 5, "TE"),
+   5: new Profile("Sam", "Johnson", 6, "OL"),
+   6: new Profile("Alex", "Carrera", 7, "DB"),
+   7: new Profile("Raul", "Enrique", 8, "LT"),
+   8: new Profile("Joe", "Rogers", 9, "WR"),
+   9: new Profile("Steven", "Smith", 10, "TE"),
+   10: new Profile("Randy", "Jackson", 11, "QB"),
+   11: new Profile("Simon", "Cowell", 12, "RB"),
+   12: new Profile("Stevie", "Curry", 13, "WR"),
+   13: new Profile("Dwayne", "Wade", 14, "OL"),
+   14: new Profile("Larry", "James", 15, "QB")
  };
 
 
@@ -69,21 +72,22 @@
  });
 
 
- $("tr").on('mouseup', function(evt) {
+ $('table').on('mouseup', function(evt) {
    setTimeout(function() {
-     var rankingTable = document.getElementById("rankingTable");
-     var x = rankingTable.getElementsByTagName("tr");
-     var y = rankingTable.getElementsByTagName("th");
+     var x = $("#rankingTable tr");
+     var y = $("#rankingTable th");
      for (i = 1; i < x.length; i++) {
        y[i + 4].innerHTML = x[i].rowIndex;
      }
 
-     var TimRank = $("#TimRank");
-     var TimOtherRank = $("#TimOtherRank");
-     TimRank.innerHTML = " " + TimOtherRank.innerHTML;
-     var StevieRank = $("#StevieRank");
-     var StevieOtherRank = $("#StevieOtherRank");
-     StevieRank.innerHTML = " " + StevieOtherRank.innerHTML;
+     var TimProfileRank = $("#TimRank");
+     var TimTableRank = $(("#ID{0}".format(TIM_ID)));
+     TimProfileRank.html(" " + TimTableRank.html());
+
+
+     var StevieProfileRank = $("#StevieRank");
+     var StevieTableRank = $("#ID{0}".format(STEVIE_ID));
+     StevieProfileRank.html(" " + StevieTableRank.html());
    }, 10);
  });
 
@@ -94,39 +98,45 @@
    });
  };
 
+ var addPlayerRow = function(player) {
+   var newRowContent = '<tr> <td><span class="glyphicon glyphicon-menu-hamburger"></span></td> <th scope="row" id="ID{0}">{0}</th> <td class="firstName">{1}</td> <td class="lastName">{2}</td> <td class="position">{3}</td> </tr>'.format(player.rank, player.firstName, player.lastName, player.position);
+   $("#sortable1").append(newRowContent);
+
+ };
+
  $(document).ready(function() {
+   // Resize left col based on height of screen
    $('#leftMainColumn').height($(window).height() - 50);
-   $('#searchButton').on("click", function(e) {
-     e.preventDefault();
+
+   // Search Functionality currently only works once and requires 
+   $('#searchButton').on("click", function(event) {
+     event.preventDefault();
      var searchTerm = $('#searchInput').val();
      $('#searchInput').val("");
-     var firstName = $(".firstName");
-     var lastName = $(".lastName");
-     var position = $(".position");
-     console.log(searchTerm);
-     for (index = 0; index < firstName.length; index++) {
-       var firstNameTD = firstName[index];
-       var lastNameTD = lastName[index];
-       var positionTD = position[index];
-       if (searchTerm == firstNameTD.innerHTML ||
-         searchTerm == lastNameTD.innerHTML ||
-         searchTerm == positionTD.innerHTML) {
-         continue;
-       } else {
-         $(firstNameTD).parent().remove();
+
+     $("tbody tr").remove();
+
+
+     for (var playerId in PLAYERS) {
+       var player = PLAYERS[playerId];
+       console.log(player.firstName);
+       if (searchTerm == player.firstName ||
+         searchTerm == player.lastName ||
+         searchTerm == player.position) {
+         addPlayerRow(player);
+
        }
+
      }
 
    });
 
 
    // Dynamically add the players
-   // for (var playerIndex in PLAYERS) {
-   //  var player = PLAYERS[playerIndex];
-   //  console.log(player);
-   //   var newRowContent = '<tr> <td><span class="glyphicon glyphicon-menu-hamburger"></span></td> <th scope="row" id="Ranks{0}">{0}</th> <td>{1}</td> <td>{2}</td> <td>{3}</td> </tr>'.format(player.rank, player.firstName, player.lastName, player.position);
-   //   $("#sortable1").append(newRowContent);
-   // }
+   for (var playerIndex in PLAYERS) {
+     var player = PLAYERS[playerIndex];
+     addPlayerRow(player);
+   }
 
    $("#rankingTable tr").click(function() {
      $(this).addClass('active').siblings().removeClass('active');
