@@ -78,11 +78,11 @@
        y[i + 4].innerHTML = x[i].rowIndex;
      }
 
-     var TimRank = document.getElementById("TimRank");
-     var TimOtherRank = document.getElementById("TimOtherRank");
+     var TimRank = $("#TimRank");
+     var TimOtherRank = $("#TimOtherRank");
      TimRank.innerHTML = " " + TimOtherRank.innerHTML;
-     var StevieRank = document.getElementById("StevieRank");
-     var StevieOtherRank = document.getElementById("StevieOtherRank");
+     var StevieRank = $("#StevieRank");
+     var StevieOtherRank = $("#StevieOtherRank");
      StevieRank.innerHTML = " " + StevieOtherRank.innerHTML;
    }, 10);
  });
@@ -96,7 +96,8 @@
 
  $(document).ready(function() {
    $('#leftMainColumn').height($(window).height() - 50);
-   $('#searchButton').click(function() {
+   $('#searchButton').on("click", function(e) {
+     e.preventDefault();
      var searchTerm = $('#searchInput').val();
      $('#searchInput').val("");
      var firstName = $(".firstName");
@@ -108,9 +109,9 @@
        var lastNameTD = lastName[index];
        var positionTD = position[index];
        if (searchTerm == firstNameTD.innerHTML ||
-        searchTerm == lastNameTD.innerHTML ||
-        searchTerm == positionTD.innerHTML) {
-        continue;
+         searchTerm == lastNameTD.innerHTML ||
+         searchTerm == positionTD.innerHTML) {
+         continue;
        } else {
          $(firstNameTD).parent().remove();
        }
