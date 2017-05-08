@@ -7,25 +7,6 @@
    ////////////////////////////////////////////////
    // Representation
    //
-
-   // Immutable properties
-  // Object.defineProperty(this, 'id', {
-  //    value: id,
-  //    writable: false
-  //  });
-  //  Object.defineProperty(this, 'firstName', {
-  //    value: firstName,
-  //    writable: false
-  //  });
-  //  Object.defineProperty(this, 'lastName', {
-  //    value: lastName,
-  //    writable: false
-  //  });
-  //  Object.defineProperty(this, 'position', {
-  //    value: position,
-  //    writable: false
-  //  });
-
    this.position = position;
    this.lastName = lastName;
    this.firstName = firstName;
@@ -159,7 +140,8 @@ var compare = function (a,b) {
      for (var playerId in PLAYERS) {
        var player = PLAYERS[playerId];
        console.log(player.firstName);
-       if (searchTerm == player.firstName ||
+       if (searchTerm == "" ||
+         searchTerm == player.firstName ||
          searchTerm == player.lastName ||
          searchTerm == player.position ||
          searchTerm == player.toString()) {
