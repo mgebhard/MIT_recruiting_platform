@@ -122,7 +122,8 @@
        console.log(player.firstName);
        if (searchTerm == player.firstName ||
          searchTerm == player.lastName ||
-         searchTerm == player.position) {
+         searchTerm == player.position ||
+         searchTerm == player.toString()) {
          addPlayerRow(player);
 
        }
