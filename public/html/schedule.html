@@ -131,16 +131,18 @@
     var startTime = document.getElementById("startTime").value;
     var endTime = document.getElementById("endTime").value;
     var date = document.getElementById("pickedDate").innerHTML;
-    var exactStart = date + "T" + startTime;
+
+    var exactStart = date + "T" + startTime + "Z";
     var exactEnd = date + "T" + endTime + "Z";
-    console.log(new Date(exactStart));
-    console.log(exactStart);
-    console.log(new Date("2017-04-21" + "T" + "00:00:00"));
+    var offsetStartDate = new Date(exactStart);
+    var offsetEndDate = new Date(exactEnd);
+    offsetStartDate = offsetStartDate.setHours(offsetStartDate.getHours() + 4);
+    offsetEndDate = offsetEndDate.setHours(offsetEndDate.getHours() + 4);
     $("#calendar").fullCalendar('renderEvent',
     {
         title: $('#eventTitle').val(),
-        start: new Date(exactStart),
-        end: new Date(exactEnd)
+        start: new Date(offsetStartDate),
+        end: new Date(offsetEndDate)
     },
     true);
 
