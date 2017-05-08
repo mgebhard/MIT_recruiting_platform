@@ -2,27 +2,15 @@
   * Author: Megan Gebhard
   * This object represents a recruit profile.
   */
- // window.localStorage.setItem("meta", JSON.stringify(meta));
- // var meta1 = JSON.parse(window.localStorage.getItem("meta"));
- // alert(meta1['foo']);
- var Profile = function(firstName, lastName, rank, position) {
+
+ var Profile = function(id, firstName, lastName, rank, position) {
    ////////////////////////////////////////////////
    // Representation
    //
-
-   // Two immutable properties
-   Object.defineProperty(this, 'firstName', {
-     value: firstName,
-     writable: false
-   });
-   Object.defineProperty(this, 'lastName', {
-     value: lastName,
-     writable: false
-   });
-   Object.defineProperty(this, 'position', {
-     value: position,
-     writable: false
-   });
+   this.position = position;
+   this.lastName = lastName;
+   this.firstName = firstName;
+   this.id = id;
 
    // Two mutable properties
    this.rank = rank;
@@ -36,28 +24,37 @@
    };
  };
 
- var TIM_ID = 1;
- var STEVIE_ID = 12;
+
+var compare = function (a,b) {
+  if (a.rank < b.rank)
+    return -1;
+  if (a.rank > b.rank)
+    return 1;
+  return 0;
+};
+
+
+ var TIM_ID = "ID1";
+ var STEVIE_ID = "ID12";
 
  // Initialize ID to player object
  var PLAYERS = {
-   0: new Profile("Rich", "Froning", 1, "DB"),
-   1: new Profile("Tim", "Roberts", 2, "QB"),
-   2: new Profile("Jim", "Brown", 3, "WR"),
-   3: new Profile("Dave", "Adams", 4, "FB"),
-   4: new Profile("John", "Hancock", 5, "TE"),
-   5: new Profile("Sam", "Johnson", 6, "OL"),
-   6: new Profile("Alex", "Carrera", 7, "DB"),
-   7: new Profile("Raul", "Enrique", 8, "LT"),
-   8: new Profile("Joe", "Rogers", 9, "WR"),
-   9: new Profile("Steven", "Smith", 10, "TE"),
-   10: new Profile("Randy", "Jackson", 11, "QB"),
-   11: new Profile("Simon", "Cowell", 12, "RB"),
-   12: new Profile("Stevie", "Curry", 13, "WR"),
-   13: new Profile("Dwayne", "Wade", 14, "OL"),
-   14: new Profile("Larry", "James", 15, "QB")
+  "ID0": new Profile("ID0", "Rich", "Froning", 1, "DB"),
+  "ID1": new Profile("ID1", "Tim", "Roberts", 2, "QB"),
+  "ID2": new Profile("ID2", "Jim", "Brown", 3, "WR"),
+  "ID3": new Profile("ID3", "Dave", "Adams", 4, "FB"),
+  "ID4": new Profile("ID4", "John", "Hancock", 5, "TE"),
+  "ID5": new Profile("ID5", "Sam", "Johnson", 6, "OL"),
+  "ID6": new Profile("ID6", "Alex", "Carrera", 7, "DB"),
+  "ID7": new Profile("ID7", "Raul", "Enrique", 8, "LT"),
+  "ID8": new Profile("ID8", "Joe", "Rogers", 9, "WR"),
+  "ID9": new Profile("ID9", "Steven", "Smith", 10, "TE"),
+  "ID10": new Profile("ID10", "Randy", "Jackson", 11, "QB"),
+  "ID11": new Profile("ID11", "Simon", "Cowell", 12, "RB"),
+  "ID12": new Profile("ID12", "Stevie", "Curry", 13, "WR"),
+  "ID13": new Profile("ID13", "Dwayne", "Wade", 14, "OL"),
+  "ID14": new Profile("ID14", "Larry", "James", 15, "QB")
  };
-
 
  var fixHelper = function(e, ui) {
    ui.children().each(function() {
@@ -77,19 +74,28 @@
      var x = $("#rankingTable tr");
      var y = $("#rankingTable th");
      for (i = 1; i < x.length; i++) {
+      // TODO (Dave): Change the ranking in the player class and then determine logic on that.
        y[i + 4].innerHTML = x[i].rowIndex;
      }
+    setProfileRanks();
+   window.localStorage.setItem("players", JSON.stringify(PLAYERS));
+   }, 10);
+ });
 
+ var setProfileRanks = function () {
      var TimProfileRank = $("#TimRank");
-     var TimTableRank = $(("#ID{0}".format(TIM_ID)));
+     var TimTableRank = $('#' + TIM_ID);
      TimProfileRank.html(" " + TimTableRank.html());
+     // Sets the "model" so it can save to persistant storage.
+     console.log(TIM_ID);
+     PLAYERS[TIM_ID].rank = TimTableRank.html();
 
 
      var StevieProfileRank = $("#StevieRank");
-     var StevieTableRank = $("#ID{0}".format(STEVIE_ID));
+     var StevieTableRank = $('#' + STEVIE_ID);
      StevieProfileRank.html(" " + StevieTableRank.html());
-   }, 10);
- });
+     PLAYERS[STEVIE_ID].rank = StevieTableRank.html();
+ };
 
  String.prototype.format = function() {
    var args = [].slice.call(arguments);
@@ -99,12 +105,27 @@
  };
 
  var addPlayerRow = function(player) {
-   var newRowContent = '<tr> <td><span class="glyphicon glyphicon-menu-hamburger"></span></td> <th scope="row" id="ID{0}">{0}</th> <td class="firstName">{1}</td> <td class="lastName">{2}</td> <td class="position">{3}</td> </tr>'.format(player.rank, player.firstName, player.lastName, player.position);
+   var newRowContent = '<tr> <td><span class="glyphicon glyphicon-menu-hamburger"></span></td> <th scope="row" id="{0}">{1}</th> <td class="firstName">{2}</td> <td class="lastName">{3}</td> <td class="position">{4}</td> </tr>'.format(player.id, player.rank, player.firstName, player.lastName, player.position);
    $("#sortable1").append(newRowContent);
 
  };
 
  $(document).ready(function() {
+  var savedPlayers = JSON.parse(window.localStorage.getItem("players"));
+  if (savedPlayers) {
+    PLAYERS = savedPlayers;
+    // PLAYERS.sort(compare);
+  }
+
+   // Dynamically add the players
+   for (var playerIndex in PLAYERS) {
+     var player = PLAYERS[playerIndex];
+     addPlayerRow(player);
+   }
+
+   setProfileRanks();
+
+  // console.log(meta1[10].rank);
    // Resize left col based on height of screen
    $('#leftMainColumn').height($(window).height() - 50);
 
@@ -116,28 +137,20 @@
 
      $("tbody tr").remove();
 
-
      for (var playerId in PLAYERS) {
        var player = PLAYERS[playerId];
        console.log(player.firstName);
-       if (searchTerm == player.firstName ||
+       if (searchTerm == "" ||
+         searchTerm == player.firstName ||
          searchTerm == player.lastName ||
          searchTerm == player.position ||
          searchTerm == player.toString()) {
          addPlayerRow(player);
-
        }
 
      }
 
    });
-
-
-   // Dynamically add the players
-   for (var playerIndex in PLAYERS) {
-     var player = PLAYERS[playerIndex];
-     addPlayerRow(player);
-   }
 
    $("#rankingTable tr").click(function() {
      $(this).addClass('active').siblings().removeClass('active');
