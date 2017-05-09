@@ -3,14 +3,14 @@
   * This object represents a recruit profile.
   */
 
- var Profile = function(id, firstName, lastName, rank, position) {
+ var Profile = function(cellid, firstName, lastName, rank, position) {
    ////////////////////////////////////////////////
    // Representation
    //
    this.position = position;
    this.lastName = lastName;
    this.firstName = firstName;
-   this.id = id;
+   this.cellid = cellid;
 
    // Two mutable properties
    this.rank = rank;
@@ -68,14 +68,26 @@ var compare = function (a,b) {
    }).disableSelection();
  });
 
+ var getSortedPlayers = function () {
+  players_sorted = [];
+  for (var key in PLAYERS) {
+    players_sorted.push(PLAYERS[key]);
+  }
+  players_sorted.sort(compare);
+  return players_sorted;
+ };
+
 
  $('table').on('mouseup', function(evt) {
    setTimeout(function() {
      var x = $("#rankingTable tr");
      var y = $("#rankingTable th");
+
      for (i = 1; i < x.length; i++) {
-      // TODO (Dave): Change the ranking in the player class and then determine logic on that.
-       y[i + 4].innerHTML = x[i].rowIndex;
+      var rankCell = y[i + 4];
+      var newRank = x[i].rowIndex;
+      y[i + 4].innerHTML = newRank;
+      PLAYERS[rankCell.id].rank = newRank;
      }
     setProfileRanks();
    window.localStorage.setItem("players", JSON.stringify(PLAYERS));
@@ -105,22 +117,27 @@ var compare = function (a,b) {
  };
 
  var addPlayerRow = function(player) {
-   var newRowContent = '<tr> <td><span class="glyphicon glyphicon-menu-hamburger"></span></td> <th scope="row" id="{0}">{1}</th> <td class="firstName">{2}</td> <td class="lastName">{3}</td> <td class="position">{4}</td> </tr>'.format(player.id, player.rank, player.firstName, player.lastName, player.position);
+   var newRowContent = '<tr> <td><span class="glyphicon glyphicon-menu-hamburger"></span></td> <th scope="row" id="{0}">{1}</th> <td class="firstName">{2}</td> <td class="lastName">{3}</td> <td class="position">{4}</td> </tr>'.format(player.cellid, player.rank, player.firstName, player.lastName, player.position);
    $("#sortable1").append(newRowContent);
 
  };
 
  $(document).ready(function() {
+  // window.localStorage.setItem("players", JSON.stringify(PLAYERS));
   var savedPlayers = JSON.parse(window.localStorage.getItem("players"));
   if (savedPlayers) {
     PLAYERS = savedPlayers;
-    // PLAYERS.sort(compare);
+    // PLAYERS_LIST = [];
+    // for (var key in PLAYERS){
+    //   PLAYERS_LIST.push(PLAYERS[key]);
+    // }
+    // PLAYERS_LIST.sort(compare);
   }
 
    // Dynamically add the players
-   for (var playerIndex in PLAYERS) {
-     var player = PLAYERS[playerIndex];
-     addPlayerRow(player);
+   sorted_players = getSortedPlayers();
+   for (var playerIndex in sorted_players) {
+     addPlayerRow(sorted_players[playerIndex]);
    }
 
    setProfileRanks();
