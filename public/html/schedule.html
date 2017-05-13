@@ -17,6 +17,7 @@
     <script src='../../fullcalendar-3.3.1/lib/moment.min.js'></script>
     <script src='../../fullcalendar-3.3.1/fullcalendar.min.js'></script>
     <link href='../js/bootstrap-formhelpers-timepicker.js'/>
+    <script src='../../fullcalendar-3.3.1/gcal.min.js'></script>
 
     <script type="text/javascript" src="../../jonthornton-jquery-timepicker-3aa2e80/jquery.timepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="../../jonthornton-jquery-timepicker-3aa2e80/jquery.timepicker.css" />
@@ -44,13 +45,20 @@
         center: 'title',
         right: 'month,agendaWeek,agendaDay,listWeek'
       },
-      defaultDate: '2017-05-09',
-          dayClick: function(date, jsEvent, view) {
-
-            var pickedDate = document.getElementById("pickedDate");
-            pickedDate.innerHTML = date.format();
-            $('#myModal').modal('toggle');
-    },
+      defaultDate: '2017-05-12',
+      dayClick: function(date, jsEvent, view) {
+        var pickedDate = document.getElementById("pickedDate");
+        pickedDate.innerHTML = date.format();
+        $('#myModal').modal('toggle');
+      },
+      eventClick: function(calEvent, jsEvent, view) {
+        var s = calEvent.start.format().split("T");
+        console.log(s);
+        $('#eventModal').find('.modal-title').text(calEvent.title);
+        $('#eventModal').find('.startTime').text(calEvent.start);
+        $('#eventModal').find('.endTime').text(calEvent.end);
+        $('#eventModal').modal('toggle');
+      },
 
       navLinks: true, // can click day/week names to navigate views
       editable: true,
@@ -58,57 +66,70 @@
       events: [
         {
           title: "New England Classic Tournament",
-          start: "2017-04-01"
+          start: "2017-04-01",
+          id: "event1"
         },
         {
           title: "Recruits Visiting Campus",
           start: "2017-04-07",
-          end: "2017-04-09"
+          end: "2017-04-09",
+          id: "event2"
         },
         {
           title: "Visit South Florida",
           start: "2017-04-15",
-          end: "2017-04-17"
+          end: "2017-04-17",
+          id: "event3"
         },
         {
           title: "Meeting with Bill",
           start: "2017-04-12T10:30:00-05:00",
-          end: "2017-04-12T12:30:00-05:00"
+          end: "2017-04-12T12:30:00-05:00",
+          id: "event4"
         },
         {
           title: "Call with Charlie",
-          start: "2017-04-27T12:00:00-05:00"
+          start: "2017-04-27T12:00:00-05:00",
+          id: "event5"
         },
         {
           title: "Meeting with John",
-          start: "2017-04-25T14:30:00-05:00"
+          start: "2017-04-25T14:30:00-05:00",
+          id: "event6"
         },
         {
           title: "New England Tournament",
-          start: "2017-05-27"
+          start: "2017-05-27",
+          id: "event7"
         },
         {
           title: "Recruits Visiting Campus",
           start: "2017-05-06",
-          end: "2017-05-08"
+          end: "2017-05-08",
+          id: "event8",
+          url: "https://calendar.google.com/calendar/render#eventpage_6%7Ceid-M2Q3cGJvcnNwOWNkMTY4cnZjNWphdWlvdGsgbHRlbGxlejdAbQ-1-0-"
         },
         {
           title: "Visit South Florida",
           start: "2017-05-12",
-          end: "2017-05-15"
+          end: "2017-05-15",
+          id: "event9"
         },
         {
           title: "Meeting with Bill",
           start: "2017-05-09T10:30:00-05:00",
-          end: "2017-05-09T12:30:00-05:00"
+          end: "2017-05-09T12:30:00-05:00",
+          id: "event10"
         },
         {
           title: "Call with Charlie",
-          start: "2017-05-30T12:00:00-05:00"
+          start: "2017-05-30T12:00:00-05:00",
+          id: "event11"
         },
         {
           title: "Meeting with John",
-          start: "2017-05-25T14:30:00-05:00"
+          start: "2017-05-25T14:30:00-05:00",
+          id: "event12"
         }
       ]
     });
@@ -177,8 +198,6 @@
 <!-- Modal -->
       <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
-          <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -189,8 +208,7 @@
                 <form class="form-inline">
                   <div class="form-group">
                     <label for="pickedDate">Date Picked: </label>
-                    <div id="pickedDate">
-                    </div>
+                    <div id="pickedDate"></div>
                   </div>
                 </form>
               </div>
@@ -211,9 +229,34 @@
               <div class="row">
                     <p><b>End Time </b><input id="endTime" type="text" class="time"></p>
               </div>
-
+              <br>
               <div class="row">
                     <p><b>Notes </b><input id="eventNotes" type="text" class="form-control"></p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="cancelButton">Close</button>
+              <button type="submit" class="btn btn-default" style="background: #337ab7; color: white"data-dismiss="modal"
+              id="saveEventButton">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="eventModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Event</h4>
+            </div>
+            <div class="modal-body" style="padding:40px">
+              <div class="row">
+                <label for="startTime" class="startTime"></label>
+              </div>
+              <div class="row">
+                <label for="endTime" class="endTime"></label>
               </div>
             </div>
             <div class="modal-footer">

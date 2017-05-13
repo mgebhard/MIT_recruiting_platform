@@ -171,6 +171,7 @@
        $("#sortable1").sortable('enable');
      } else {
        $("#sortable1").sortable('disable');
+       // document.getElementsByClassName('glyphicon-menu-hamburger')[0].style.visibility = 'hidden';
      }
      $("tbody tr").remove();
 
